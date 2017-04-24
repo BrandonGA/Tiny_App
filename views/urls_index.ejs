@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TinyApp</title>
+</head>
+
+<body style="font-size:20px; padding:50px;">
+  <%- include('partials/_header'); %>
+  <table style="width: 100%">
+    <tr>
+      <th>Shortened URL</th>
+      <th>Full URL</th>
+
+    </tr>
+    <% for (var key of urls) { %>
+      <tr>
+        <td>
+          <center>
+            <a href="/u/<%= key.shortUrl %>"><%= key.shortUrl %></a>
+          </center>
+        </td>
+        <td>
+          <form method="POST" action="/urls/<%=key.shortUrl%>">
+             <input
+               name="update"
+               type="text"
+               style= "width: 80%;"
+               value= "<%= key.longURL %>">
+             <button type="button" name="update">Update</button>
+           </form></td>
+        <td>
+          <form
+            method="POST"
+            action="/urls/<%=key.shortUrl%>/delete">
+          <button type="submit">Delete URL
+          </form>
+        </td>
+    </tr>
+    <% } %>
+  </table>
+    <center>
+      <a href="/urls/new">Shorten New URL</a>
+    </center>
+    <!-- Add your EJS code here -->
+</body>
+</html>

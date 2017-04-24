@@ -1,0 +1,11 @@
+<center><h2>Tiny App</h2></center>
+
+<% if (user.email === undefined) {%>
+  <a href="/login" style="padding-left: 10em">LogIn</a>
+  <a href="/registration" style="padding-left: 10em">Register</a>
+<%} else { %>
+  <%= user.email %>
+  <form action="/logout" method="POST">
+  <input type="submit" value="LogOut">
+</form>
+<%}%>
